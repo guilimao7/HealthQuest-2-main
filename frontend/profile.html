@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - HealthQuest</title>
+    <link rel="stylesheet" href="receitas.css">
+    <link rel="stylesheet" href="perfil.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="assets/logo.png" alt="HealthQuest Logo">
+            <h1>HealthQuest</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#">Treinos</a></li>
+                <li><a href="receitas.html">Receitas</a></li>
+                <li><a href="#">Ranking</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="profile-wrapper">
+        <div class="container">
+
+            <div id="view-mode" class="profile-card">
+                <h2>Meu Perfil</h2>
+                <p>
+                    <strong>Usuário:</strong>
+                    <span id="profile-username">Carregando...</span>
+                </p>
+                <p>
+                    <strong>Email:</strong>
+                    <span id="profile-email">Carregando...</span>
+                </p>
+                <div class="profile-actions">
+                    <button id="btn-show-edit" class="btn-submit">Editar Perfil</button>
+                    <button id="btn-delete" class="btn-danger">Deletar Conta</button>
+                </div>
+            </div>
+
+            <form id="edit-mode" class="profile-card modal-hidden" novalidate>
+                <h2>Editar Perfil</h2>
+
+                <label>
+                    Nome de Usuário
+                    <input type="text" id="edit-username" name="username" required>
+                </label>
+
+                <label>
+                    Email
+                    <input type="email" id="edit-email" name="email" required>
+                </label>
+
+                <hr>
+                <p>Para atualizar a senha, preencha os campos (deixe em branco para manter a senha atual):</p>
+                <label>
+                    Nova Senha
+                    <input type="password" id="edit-password" name="password">
+                </label>
+                <label>
+                    Confirmar Nova Senha
+                    <input type="password" id="edit-password-confirm">
+                </label>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">Salvar Alterações</button>
+                    <button type="button" id="btn-cancel-edit" class="btn-cancel">Cancelar</button>
+                </div>
+                <div id="formMessage" class="form-message" aria-live="polite"></div>
+            </form>
+
+        </div>
+    </main>
+
+    <script src="perfil.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+/* (Em perfil.css) */
+
+/* Garante que o body use o gradiente (se já não estiver no receitas.css) */
+body {
+    background: linear-gradient(135deg, #302f2f 0%, #851010 100%);
+    min-height: 100vh;
+}
+
+/* Esconde o modo de edição por padrão */
+.modal-hidden {
+    display: none;
+}
+
+/* Container principal da página de perfil */
+.profile-wrapper .container {
+    max-width: 700px;
+    margin: 40px auto;
+    /* Aumenta a margem do topo */
+    padding: 0 16px;
+    width: 100%;
+}
+
+/* O CARD ESCURO (aqui está a mágica) 
+      Esta classe é usada tanto por #view-mode quanto #edit-mode
+    */
+.profile-card {
+    background: rgba(40, 40, 40, 0.75);
+    /* Fundo cinza escuro semi-transparente */
+    backdrop-filter: blur(5px);
+    /* Efeito de vidro (opcional, mas bonito) */
+    border-radius: 16px;
+    /* Cantos arredondados como na sua print */
+    padding: 30px 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Borda sutil */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Título (Meu Perfil / Editar Perfil) */
+.profile-card h2 {
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #ffffff;
+    /* Texto branco */
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+/* --- MODO DE VISUALIZAÇÃO --- */
+#view-mode p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #f0f0f0;
+    /* Texto claro */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 12px;
+    display: flex;
+}
+
+#view-mode p strong {
+    color: #aaa;
+    /* Cor do "label" (Usuário:, Email:) */
+    display: inline-block;
+    width: 120px;
+    /* Alinha os valores */
+    flex-shrink: 0;
+}
+
+#view-mode p span {
+    color: #fff;
+    /* O valor (nome do usuário) */
+}
+
+
+/* --- MODO DE EDIÇÃO (Formulário) --- */
+#edit-mode label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #eee;
+    /* Texto do label claro */
+}
+
+#edit-mode input[type="text"],
+#edit-mode input[type="email"],
+#edit-mode input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #555;
+    border-radius: 6px;
+    margin-top: 6px;
+    font-size: 1rem;
+    background: #333;
+    /* Fundo do input escuro */
+    color: #fff;
+    /* Texto digitado branco */
+}
+
+#edit-mode input:focus {
+    border-color: #2b8aef;
+    outline: none;
+}
+
+#edit-mode hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 25px 0;
+}
+
+#edit-mode p {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+
+/* --- BOTÕES --- */
+.profile-actions,
+.form-actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+/* Botões genéricos */
+.btn-submit {
+    background: #c94040;
+    /* Vermelho do seu botão "Comece Agora" */
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-submit:hover {
+    background: #e04a4a;
+}
+
+.btn-cancel {
+    background: #555;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background: #666;
+}
+
+.btn-danger {
+    background: transparent;
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: auto;
+    /* Joga o botão de deletar para a direita */
+}
+
+.btn-danger:hover {
+    background: #ff6b6b;
+    color: #fff;
+}
+
+/* Mensagem de sucesso/erro no form */
+#formMessage {
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}

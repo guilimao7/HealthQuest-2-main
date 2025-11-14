@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receitas</title>
+  <link rel="stylesheet" href="receitas.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="assets/logo.png" alt="HealthQuest Logo">
+      <h1>HealthQuest</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="#">Treinos</a></li>
+        <li><a href="receitas.html">Receitas</a></li>
+        <li><a href="#">Ranking</a></li>
+        <li><a href="profile.html">Perfil</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="posts-wrapper">
+    <div class="container">
+      <div class="posts-header">
+        <h2>Receitas e Dicas</h2>
+        <button id="btnOpenNewPost" class="btn-new-post" aria-label="Nova postagem">+</button>
+      </div>
+
+      <!-- posts grid (onde JS vai inserir as receitas) -->
+      <section class="posts-grid" id="postsGrid">
+        <!-- ...existing code (exemplos estáticos removidos; JS preenche aqui) ... -->
+      </section>
+    </div>
+  </main>
+
+  <div id="recipeDetailsModal" class="modal-hidden" aria-hidden="true">
+    <div class="modal-backdrop" id="detailsModalBackdrop"></div>
+
+    <div class="recipe-details-content">
+      <button type="button" class="close-modal" id="closeDetailsModal" aria-label="Fechar">✕</button>
+
+      <h2 id="modalRecipeTitle"></h2>
+      <img id="modalRecipeImage" src="" alt="Imagem da receita" style="display: none;" />
+      <p id="modalRecipeText"></p>
+    </div>
+  </div>
+
+  <!-- modal / formulário de nova receita -->
+  <div id="newPostModal" class="modal-hidden" aria-hidden="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <form id="newPostForm" class="new-post-form" novalidate>
+      <button type="button" class="close-modal" id="closeModal" aria-label="Fechar">✕</button>
+      <h3>Nova Receita</h3>
+
+      <label>
+        Título
+        <input type="text" name="title" id="postTitle" required maxlength="100" accept="image/*" />
+      </label>
+
+      <label>
+        Descrição / Receita
+        <textarea name="text" id="postText" rows="6" required></textarea>
+      </label>
+
+      <label style="border: 1px solid black; padding: 5px; text-align: center; display: block;">
+        Imagem URL (opcional)
+        <input type="file" name="image" id="postImage" style="display: none;" />
+      </label>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">Publicar</button>
+        <button type="button" class="btn-cancel" id="cancelBtn">Cancelar</button>
+      </div>
+
+      <div id="formMessage" class="form-message" aria-live="polite"></div>
+    </form>
+  </div>
+
+  <script src="receitas.js"></script>
+</body>
+
+</html>
