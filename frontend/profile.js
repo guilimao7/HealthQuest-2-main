@@ -36,11 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const { data } = await res.json();
 
             // Preenche o modo de visualização
-            profileUsername.textContent = data.username;
+            profileUsername.textContent = data.name;
             profileEmail.textContent = data.email;
 
             // Preenche o formulário de edição (para quando for aberto)
-            editUsername.value = data.username;
+            editUsername.value = data.name;
             editEmail.value = data.email;
 
         } catch (error) {
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // a rota do backend só está atualizando user e email)
 
         const updatedData = {
-            username: editUsername.value,
+            name: editUsername.value,
             email: editEmail.value,
             // (Lógica de senha viria aqui)
         };
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formMessage.textContent = 'Perfil salvo com sucesso!';
 
             // Atualiza os dados na tela de visualização
-            profileUsername.textContent = data.username;
+            profileUsername.textContent = data.name;
             profileEmail.textContent = data.email;
 
             // Volta para o modo de visualização

@@ -135,15 +135,15 @@ app.get("/api/recipes", (req, res) => {
 // PRESUMO que você já tenha sua conexão de 'db' configurada.
 
 /**
- * ROTA GET: Buscar dados do perfil
+ * ROTA GET: Buscar dados do perfil (CORRIGIDA)
  */
 app.get('/api/profile/:id', (req, res) => {
   const { id } = req.params;
 
-  // (Use a tabela correta. Estou assumindo 'users')
-  const query = "SELECT id, username, email FROM users WHERE id = ?";
+  // CORRIGIDO: Trocado 'username' por 'name' para bater com o seu banco
+  const query = "SELECT id, name, email FROM users WHERE id = ?"; 
 
-  db.query(query, [id], (err, result) => {
+  connection.query(query, [id], (err, result) => {
     if (err) {
       console.error('Erro ao buscar perfil:', err);
       return res.status(500).json({ message: 'Erro no servidor.' });
@@ -151,38 +151,33 @@ app.get('/api/profile/:id', (req, res) => {
     if (result.length === 0) {
       return res.status(404).json({ message: 'Usuário não encontrado.' });
     }
-
-    // Retorna o primeiro (e único) resultado
     res.status(200).json({ data: result[0] });
   });
 });
 
-
 /**
- * ROTA PUT: Atualizar o perfil
- * (Deixaremos a lógica pronta para o próximo passo)
+ * ROTA PUT: Atualizar o perfil (CORRIGIDA)
  */
 app.put('/api/profile/:id', (req, res) => {
   const { id } = req.params;
-  const { username, email } = req.body;
-  // CUIDADO: Você precisará de lógica para atualizar a SENHA separadamente e com hash!
-  // Por enquanto, vamos focar em username e email.
+  
+  // CORRIGIDO: Trocado 'username' por 'name'
+  const { name, email } = req.body; 
 
-  if (!username || !email) {
-    return res.status(400).json({ message: 'Usuário e email são obrigatórios.' });
+  if (!name || !email) {
+    return res.status(400).json({ message: 'Nome e email são obrigatórios.' });
   }
 
-  const query = "UPDATE users SET username = ?, email = ? WHERE id = ?";
+  const query = "UPDATE users SET name = ?, email = ? WHERE id = ?";
 
-  db.query(query, [username, email, id], (err, result) => {
+  connection.query(query, [name, email, id], (err, result) => {
     if (err) {
       console.error('Erro ao atualizar perfil:', err);
       return res.status(500).json({ message: 'Erro ao atualizar.' });
     }
-    res.status(200).json({ message: 'Perfil atualizado com sucesso!', data: { id, username, email } });
+    res.status(200).json({ message: 'Perfil atualizado com sucesso!', data: { id, name, email } });
   });
 });
-
 
 /**
  * ROTA DELETE: Deletar o perfil
@@ -193,7 +188,7 @@ app.delete('/api/profile/:id', (req, res) => {
 
   const query = "DELETE FROM users WHERE id = ?";
 
-  db.query(query, [id], (err, result) => {
+  connection.query(query, [id], (err, result) => {
     if (err) {
       console.error('Erro ao deletar perfil:', err);
       return res.status(500).json({ message: 'Erro ao deletar.' });
